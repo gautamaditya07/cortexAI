@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --active-glow: #00ffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #020205;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  transition: background 1.5s ease-in-out;
+}
+
+/* 🌌 DYNAMIC MESH BACKGROUND */
+.mesh-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes float-slow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 5%) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.aurora-layer {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at center, var(--active-glow) 0%, transparent 60%);
+  filter: blur(100px);
+  animation: float-slow 15s ease-in-out infinite;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar { display: none; }
+  .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* 🧊 SUPER-TRANSPARENT GLASS */
+  .ultra-glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ✨ TEXT SELECTION GLOW */
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #fff;
+}
