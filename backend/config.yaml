@@ -1,0 +1,16 @@
+# backend/config.yaml
+
+# Document Processing Settings
+chunk_size: 1000
+chunk_overlap: 200
+
+# Vector Database Settings
+vector_db_path: "vector_db/faiss_index"
+embedding_model: "all-MiniLM-L6-v2" # Fast and lightweight for local embeddings
+
+# LLM Settings (Mistral)
+llm_model: "HuggingFaceH4/zephyr-7b-beta"
+top_k_retrieval: 4 # How many chunks to fetch for the LLM
+
+# External APIs
+arxiv_max_results: 3
